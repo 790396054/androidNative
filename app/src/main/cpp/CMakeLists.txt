@@ -14,16 +14,24 @@ project("androidnative")
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
+# set() 定义变量 kk 变量的值是 vallllllllll
 set(kk vallllllllll)
+# message() 打印日志，${} 引用变量
 message(${kk})
+# 以下 3 行是 CMAKE 默认的常量。可以直接使用。当然还有很多其他的常量。
 message(${CMAKE_CURRENT_LIST_DIR})
 message(${CMAKE_CURRENT_LIST_FILE})
 message(${PROJECT_NAME})
 
-if (false)
+# 逻辑判断。关键之和方法不区分大小写，但是变量区分大小写
+if (true)
     message("this is true")
 endif ()
 
+# 添加动态库和静态库，SHARED是动态库，STATIC 是静态库
+# androidnative 是动态库的名称，编译后为 libandroidnative.so
+# SHARED 为动态库类型
+# native-lib.cpp 要编译的源文件 多个用逗号隔开
 add_library( # Sets the name of the library.
         androidnative
 
@@ -31,7 +39,8 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        native-lib.cpp)
+        native-lib.cpp Demo.cpp main.cpp)
+
 # 编译 people 动态库
 add_library(people-lib
         SHARED
@@ -59,6 +68,8 @@ find_library( # Sets the name of the path variable.
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
+# 实现动态库的关联，将这 androidnative
+#  people-lib 两个动态库关联起来，androidnative就可以引用people-lib中的代码了。
 target_link_libraries( # Specifies the target library.
         androidnative
         people-lib

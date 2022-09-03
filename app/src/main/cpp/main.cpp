@@ -9,15 +9,14 @@
 //#include "people/people.h"
 #include <people.h>
 
-extern "C" JNIEXPORT jstring JNICALL
-Java_com_didi_androidnative_MainActivity_stringFromJNI(
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_didi_androidnative_MainActivity_drawFromJNI(
         JNIEnv *env,
         jobject /* this */) {
-    std::string hello = "Hello from Native";
-//    auto *people = new People();
+    std::string hello = "I am a draw method";
     People people;
     int result = add(1,2);
     std::string s = people.getString() + " " +std::to_string(result);
-    return env->NewStringUTF(s.c_str());
-//    return env->NewStringUTF(hello.c_str());
+    return env->NewStringUTF(hello.c_str());
 }

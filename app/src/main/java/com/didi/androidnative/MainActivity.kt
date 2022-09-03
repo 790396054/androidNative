@@ -17,6 +17,9 @@ class MainActivity : AppCompatActivity() {
 
         // Example of a call to a native method
         binding.sampleText.text = stringFromJNI()
+        binding.btn.setOnClickListener {
+            binding.btn.text = drawFromJNI()
+        }
     }
 
     /**
@@ -24,6 +27,8 @@ class MainActivity : AppCompatActivity() {
      * which is packaged with this application.
      */
     external fun stringFromJNI(): String
+
+    private external fun drawFromJNI(): String
 
     companion object {
         // Used to load the 'androidnative' library on application startup.
