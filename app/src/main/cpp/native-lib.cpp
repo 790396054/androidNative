@@ -8,6 +8,7 @@
 // 这也的为搜索路径，就可以使用 <> 引用头文件了。
 //#include "people/people.h"
 #include <people.h>
+#include <android/log.h>
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_didi_androidnative_MainActivity_stringFromJNI(
@@ -17,6 +18,7 @@ Java_com_didi_androidnative_MainActivity_stringFromJNI(
 //    auto *people = new People();
     People people;
     int result = add(1,2);
+    __android_log_print(ANDROID_LOG_DEBUG, "MainActivity", "dynamic lib loaded");
     std::string s = people.getString() + " " +std::to_string(result);
     return env->NewStringUTF(s.c_str());
 //    return env->NewStringUTF(hello.c_str());

@@ -8,15 +8,17 @@
 // 这也的为搜索路径，就可以使用 <> 引用头文件了。
 //#include "people/people.h"
 #include <people.h>
+#include <AndroidLog.h>
 
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_didi_androidnative_MainActivity_drawFromJNI(
         JNIEnv *env,
-        jobject /* this */) {
+        jobject jobj /* this */) {
     std::string hello = "I am a draw method";
     People people;
     int result = add(1,2);
+    LOGD("dynamic lib");
     std::string s = people.getString() + " " +std::to_string(result);
     return env->NewStringUTF(hello.c_str());
 }

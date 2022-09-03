@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">androidNative</string>
+    <string name="jni_dynamic">JNI 动态注册</string>
+    <string name="jni_static">JNI 静态注册</string>
 </resources>

@@ -34,12 +34,19 @@ endif ()
 # native-lib.cpp 要编译的源文件 多个用逗号隔开
 add_library( # Sets the name of the library.
         androidnative
-
         # Sets the library as a shared library.
         SHARED
-
         # Provides a relative path to your source file(s).
         native-lib.cpp Demo.cpp main.cpp)
+
+# 编译 dynamic 动态库
+add_library(dynamic-lib
+        SHARED
+
+        base/jvm.cpp
+        base/AndroidLog.cpp
+        jni/jni_type_demo.cpp
+        jni/jni_dynamic_load.cpp)
 
 # 编译 people 动态库
 add_library(people-lib
@@ -54,8 +61,8 @@ add_library(people-lib
 
 # 将 people 文件夹设置到搜索路径中，这样头文件引用就可以这样写
 # #include <people.h>
-include_directories(people/)
-
+include_directories(${CMAKE_HOME_DIRECTORY}/people/)
+include_directories(${CMAKE_HOME_DIRECTORY}/base/)
 
 find_library( # Sets the name of the path variable.
         log-lib
@@ -76,3 +83,8 @@ target_link_libraries( # Specifies the target library.
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})
+
+target_link_libraries(
+        dynamic-lib
+        ${log-lib}
+)
