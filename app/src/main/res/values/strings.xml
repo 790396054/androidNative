@@ -2,4 +2,8 @@
     <string name="app_name">androidNative</string>
     <string name="jni_dynamic">JNI 动态注册</string>
     <string name="jni_static">JNI 静态注册</string>
+    <string name="jni_exception">JNI异常处理</string>
+    <string name="jni_bitmap">JNI 图像处理</string>
+    <string name="jni_thread">JNI创建线程</string>
+    <string name="jni_thread_call">JNI子线程调用方法</string>
 </resources>

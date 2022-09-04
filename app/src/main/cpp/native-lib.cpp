@@ -11,7 +11,7 @@
 #include <android/log.h>
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_didi_androidnative_MainActivity_stringFromJNI(
+Java_com_didi_androidnative_JniLoad_stringFromJNI(
         JNIEnv *env,
         jobject /* this */) {
     std::string hello = "Hello from Native";
@@ -22,4 +22,18 @@ Java_com_didi_androidnative_MainActivity_stringFromJNI(
     std::string s = people.getString() + " " +std::to_string(result);
     return env->NewStringUTF(s.c_str());
 //    return env->NewStringUTF(hello.c_str());
+}
+
+#define JAVA_CLASS "com/didi/androidnative/JniLoad"
+#include <jvm.h>
+#include <AndroidLog.h>
+
+JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
+    JNIEnv *env = nullptr;
+    if (vm->GetEnv(reinterpret_cast<void **>(&env), JNI_VERSION_1_6) != JNI_OK) {
+        return JNI_FALSE;
+    }
+    setJvm(vm);
+    LOGD("androidnative 动态库加载完成");
+    return JNI_VERSION_1_6;
 }

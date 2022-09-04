@@ -12,7 +12,7 @@
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_didi_androidnative_MainActivity_drawFromJNI(
+Java_com_didi_androidnative_JniLoad_drawFromJNI(
         JNIEnv *env,
         jobject jobj /* this */) {
     std::string hello = "I am a draw method";

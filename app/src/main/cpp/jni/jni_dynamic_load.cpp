@@ -5,6 +5,7 @@
 #include <jni.h>
 #include <AndroidLog.h>
 #include <string>
+#include <jvm.h>
 #include "jni_type_demo.h"
 
 #define JAVA_CLASS "com/didi/androidnative/DynamicLib"
@@ -61,6 +62,7 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
     if (registerNativeMethods(env, JAVA_CLASS, gMethods, NELEM(gMethods)) != JNI_TRUE) {
         return JNI_FALSE;
     }
+    setJvm(vm);
     LOGD("动态库加载完成");
     return JNI_VERSION_1_6;
 }

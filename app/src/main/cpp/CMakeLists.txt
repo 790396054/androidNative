@@ -37,7 +37,13 @@ add_library( # Sets the name of the library.
         # Sets the library as a shared library.
         SHARED
         # Provides a relative path to your source file(s).
-        native-lib.cpp Demo.cpp main.cpp)
+        native-lib.cpp
+        base/jvm.cpp
+        jni/jni_exception.cpp
+        jni/jni_bitmap.cpp
+        jni/jni_thread.cpp
+        Demo.cpp
+        main.cpp)
 
 # 编译 dynamic 动态库
 add_library(dynamic-lib
