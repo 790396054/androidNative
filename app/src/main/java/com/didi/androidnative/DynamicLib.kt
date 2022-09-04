@@ -13,4 +13,6 @@ class DynamicLib {
     external fun plus(a: Int, b: Int): Int
 
     external fun arrayDemo(array: Array<String>): String
+
+    external fun objDemo(animal: Animal)
 }

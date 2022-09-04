@@ -28,7 +28,8 @@ jstring getMessage(JNIEnv *env, jobject jobj, jstring str) {
 static JNINativeMethod gMethods[] = {
         {"plus",          "(II)I",                                  (void *) sum},
         {"stringFromJNI", "(Ljava/lang/String;)Ljava/lang/String;", (void *) getMessage},
-        {"arrayDemo", "([Ljava/lang/String;)Ljava/lang/String;", (void *) arrayDemo}
+        {"arrayDemo", "([Ljava/lang/String;)Ljava/lang/String;", (void *) arrayDemo},
+        {"objDemo", "(Lcom/didi/androidnative/Animal;)V", (void *) objCall}
 };
 
 #define NELEM(x) ((int)(sizeof(x)/sizeof((x)[0])))

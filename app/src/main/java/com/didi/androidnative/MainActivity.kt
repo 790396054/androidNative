@@ -3,6 +3,7 @@ package com.didi.androidnative
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import com.didi.androidnative.databinding.ActivityMainBinding
 
@@ -25,10 +26,13 @@ class MainActivity : AppCompatActivity() {
         }
         // 演示 JNI 动态注册，加载动态库时，调用固定的方法，我们在这个方法中将要实现的 JNI 方法注册到系统中，这样运行时速度更快
         val dynamicLib = DynamicLib()
+        val animal = Animal("KeLe");
         binding.dynamicBtn.setOnClickListener {
             val result = dynamicLib.plus(2, 3)
             val str = dynamicLib.arrayDemo(arrayOf("Apple", "Banana", "Orange", "Pear", "nuts"))
             binding.dynamicBtn.text = "${dynamicLib.stringFromJNI("I from java goto native")} $result $str"
+            dynamicLib.objDemo(animal)
+            Log.d(Constants.TAG, "onCreate: animal = $animal")
         }
     }
 

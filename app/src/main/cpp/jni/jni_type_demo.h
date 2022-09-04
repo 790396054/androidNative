@@ -10,3 +10,5 @@
 jstring arrayDemo(JNIEnv *env, jobject jobj, jobjectArray str_array);
 
 #endif //ANDROIDNATIVE_JNI_TYPE_DEMO_H
+
+void objCall(JNIEnv *env, jobject instance, jobject animal);
